@@ -58,9 +58,16 @@
     }, { threshold: 0.5 });
   }
 
-  // ─── Label from filename ───
-  function labelFromName(name) {
+  // ─── Extract sort number from filename like "Name (3).png" → 3 ───
+  function extractNumber(name) {
+    var m = name.match(/\((\d+)\)\s*\.[^.]+$/);
+    return m ? parseInt(m[1], 10) : null;
+  }
+
+  // ─── Clean label: remove (N) from filename ───
+  function cleanLabel(name) {
     return name
+      .replace(/\s*\(\d+\)/, '')
       .replace(/\.[^.]+$/, '')
       .replace(/[_-]/g, ' ')
       .replace(/\s+/g, ' ')
@@ -174,23 +181,32 @@
         var animations = [];
 
         files.forEach(function (f) {
-          var name = f.name.toLowerCase();
+          var lower = f.name.toLowerCase();
           if (f.type !== 'file') return;
-          if (exclude[name]) return;
+          if (exclude[lower]) return;
 
-          var ext = name.split('.').pop();
-          var src = f.download_url;
-          var label = labelFromName(f.name);
+          var ext = lower.split('.').pop();
+          if (!imageExts[ext] && !videoExts[ext]) return;
+
+          var label = cleanLabel(f.name);
+          var num = extractNumber(f.name);
+          var type = imageExts[ext] ? 'image' : 'video';
+
+          var item = {
+            src: f.download_url,
+            label: label,
+            type: type,
+            num: num || 0,
+            sortKey: num !== null ? num : -1
+          };
 
           if (imageExts[ext]) {
-            artworks.push({ src: src, label: label, type: 'image' });
-          } else if (videoExts[ext]) {
-            animations.push({ src: src, label: label, type: 'video' });
+            artworks.push(item);
+          } else {
+            animations.push(item);
           }
         });
 
-        artworks.reverse();
-        animations.reverse();
         render(artworks, animations);
       })
       .catch(function (err) {
@@ -207,7 +223,15 @@
   function render(artworks, animations) {
     feed.innerHTML = '';
 
+    // Merge & sort: highest number = newest = top
     var all = artworks.concat(animations);
+    all.sort(function (a, b) {
+      // -1 (no number) goes last
+      var na = a.sortKey >= 0 ? a.sortKey : -99999;
+      var nb = b.sortKey >= 0 ? b.sortKey : -99999;
+      return nb - na;
+    });
+
     if (all.length === 0) {
       feed.innerHTML = '<div class="feed-empty">No media found. Drop files into the media folder!</div>';
       return;
