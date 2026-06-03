@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Afterblink — 2D Animator</title>
+  <meta name="description" content="Afterblink is a 2D animator crafting animation and digital art. Showcasing original artwork, animations, and creative projects.">
+  <meta name="keywords" content="Afterblink, 2D animator, animation, digital art, After Verse">
+  <meta name="author" content="Afterblink">
+  <meta name="robots" content="index, follow">
+
+  <meta name="google-adsense-account" content="ca-pub-xxxxxxxxxxxxxx">
+
+  <link rel="icon" type="image/png" href="media/Logo.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div id="bg-blur"></div>
+
+  <div id="splash">
+    <div class="splash-bg"></div>
+    <div class="splash-content">
+      <div class="splash-line-top"></div>
+      <div class="splash-logo" id="splashLogo">Afterblink</div>
+      <div class="splash-sub" id="splashSub">2D Animator</div>
+      <div class="splash-line-bottom"></div>
+    </div>
+  </div>
+
+  <canvas id="stars"></canvas>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox">
+    <button class="lightbox-close" id="lbClose">&times;</button>
+    <video class="lightbox-video" id="lbVideo" controls autoplay playsinline></video>
+    <img class="lightbox-image" id="lbImage" alt="" />
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <!-- NAV -->
+  <nav class="nav" id="navbar">
+    <div class="nav-inner">
+      <a class="nav-brand" href="#" data-tab="home">
+        <img src="media/Logo.png" alt="Afterblink" class="nav-logo" />
+        <span class="nav-brand-text">Afterblink</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <button class="nav-btn active" data-tab="home">Home</button>
+        <button class="nav-btn" data-tab="media">Media</button>
+        <button class="nav-btn" data-tab="socials">Socials</button>
+        <button class="nav-btn" data-tab="about">About</button>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <main id="mainContent">
+
+    <!-- ===== HOME ===== -->
+    <section class="tab active" id="tab-home">
+      <div class="container home-container">
+
+        <!-- Hero Banner -->
+        <section class="hero-banner">
+          <div class="hero-banner-bg"></div>
+          <div class="hero-banner-content">
+            <div class="hero-banner-avatar">
+              <img src="media/Logo.png" alt="Afterblink" />
+            </div>
+            <h1 class="hero-banner-title">After Verse!</h1>
+            <p class="hero-banner-sub">The Community of the Council.</p>
+          </div>
+        </section>
+
+        <!-- Discord Hero -->
+        <section class="hero-discord">
+          <div class="hero-discord-media">
+            <img src="media/Discord%20server%20screenshot.png" alt="Discord Server" loading="lazy" />
+          </div>
+          <div class="hero-discord-body">
+            <h2 class="hero-discord-title">Lively Community</h2>
+            <p class="hero-discord-text">
+              We'd love to have you in there. Connect with fellow fans, share your work, get early sneak peeks, and hang out with the creator. It's chill, it's creative, and everyone's welcome.
+            </p>
+            <a href="https://discord.com/invite/ryYRWAQ92k" target="_blank" rel="noopener" class="hero-discord-btn">
+              <i class="fa-brands fa-discord"></i> Join Discord!
+            </a>
+          </div>
+        </section>
+
+        <!-- Stats row -->
+        <div class="stats-row">
+          <div class="stat-item">
+            <span class="stat-num" id="statArtworks">0</span>
+            <span class="stat-label">Artworks</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" id="statAnimations">0</span>
+            <span class="stat-label">Animations</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" id="statVisits">—</span>
+            <span class="stat-label">Visits</span>
+          </div>
+        </div>
+
+        <!-- Socials row below hero -->
+        <!-- Writer search -->
+        <div class="writer-search">
+          <p class="writer-search-text">
+            <strong>Actively hunting for cracked story writers &amp; imagination geniuses</strong>
+            <span class="writer-search-emoji">😭🙏</span>
+          </p>
+          <p class="writer-search-sub">Got a wild story in your head? Let's bring it to life together. <a href="https://discord.com/invite/ryYRWAQ92k" target="_blank" rel="noopener">Join the server</a> and hmu.</p>
+        </div>
+
+        <div class="home-socials">
+          <a href="https://www.instagram.com/afterblink_nsfw/" target="_blank" rel="noopener" class="home-social-btn">
+            <i class="fa-brands fa-instagram"></i><span>Instagram 1</span>
+          </a>
+          <a href="https://www.instagram.com/quantumaxiom_official/" target="_blank" rel="noopener" class="home-social-btn">
+            <i class="fa-brands fa-instagram"></i><span>Instagram 2</span>
+          </a>
+          <a href="https://www.youtube.com/@QuantumAxiom" target="_blank" rel="noopener" class="home-social-btn">
+            <i class="fa-brands fa-youtube"></i><span>YouTube</span>
+          </a>
+          <a href="mailto:quantumaxiomofficial@gmail.com" class="home-social-btn">
+            <i class="fa-solid fa-envelope"></i><span>Email</span>
+          </a>
+        </div>
+
+      </div>
+      <footer class="footer">
+        <p>&copy; 2026 Afterblink. All rights reserved.</p>
+      </footer>
+    </section>
+
+    <!-- ===== MEDIA (Instagram-style feed) ===== -->
+    <section class="tab" id="tab-media">
+      <div class="container media-layout">
+        <aside class="media-sidebar">
+          <div class="tools-card">
+            <h3 class="tools-title">Tools &amp; Software</h3>
+            <ul class="tools-list">
+              <li><span>Krita</span></li>
+              <li><span>ClipStudio Paint</span></li>
+              <li><span>ToonBoom Harmony</span></li>
+              <li><span>Opentoonz</span></li>
+              <li><span>Blender</span></li>
+              <li><span>CapCut</span></li>
+              <li><span>DaVinci Resolve Studio</span></li>
+            </ul>
+          </div>
+        </aside>
+        <div class="media-feed-area">
+          <div class="feed" id="mediaFeed"></div>
+        </div>
+      </div>
+      <footer class="footer">
+        <p>&copy; 2026 Afterblink. All rights reserved.</p>
+      </footer>
+    </section>
+
+    <!-- ===== SOCIALS ===== -->
+    <section class="tab" id="tab-socials">
+      <div class="container socials-container">
+        <div class="socials-grid">
+          <a href="https://www.instagram.com/afterblink_nsfw/" target="_blank" rel="noopener" class="socials-card" data-copy="https://www.instagram.com/afterblink_nsfw/">
+            <div class="socials-card-icon ig"><i class="fa-brands fa-instagram"></i></div>
+            <div class="socials-card-body">
+              <h3>Instagram 1</h3>
+              <p>@afterblink_nsfw</p>
+            </div>
+            <button class="socials-copy" title="Copy link"><i class="fa-regular fa-copy"></i></button>
+          </a>
+          <a href="https://www.instagram.com/quantumaxiom_official/" target="_blank" rel="noopener" class="socials-card" data-copy="https://www.instagram.com/quantumaxiom_official/">
+            <div class="socials-card-icon ig"><i class="fa-brands fa-instagram"></i></div>
+            <div class="socials-card-body">
+              <h3>Instagram 2</h3>
+              <p>@quantumaxiom_official</p>
+            </div>
+            <button class="socials-copy" title="Copy link"><i class="fa-regular fa-copy"></i></button>
+          </a>
+          <a href="https://www.youtube.com/@QuantumAxiom" target="_blank" rel="noopener" class="socials-card" data-copy="https://www.youtube.com/@QuantumAxiom">
+            <div class="socials-card-icon yt"><i class="fa-brands fa-youtube"></i></div>
+            <div class="socials-card-body">
+              <h3>YouTube</h3>
+              <p>@QuantumAxiom</p>
+            </div>
+            <button class="socials-copy" title="Copy link"><i class="fa-regular fa-copy"></i></button>
+          </a>
+          <a href="mailto:quantumaxiomofficial@gmail.com" class="socials-card" data-copy="quantumaxiomofficial@gmail.com">
+            <div class="socials-card-icon email"><i class="fa-solid fa-envelope"></i></div>
+            <div class="socials-card-body">
+              <h3>Email</h3>
+              <p>quantumaxiomofficial</p>
+            </div>
+            <button class="socials-copy" title="Copy link"><i class="fa-regular fa-copy"></i></button>
+          </a>
+        </div>
+      </div>
+      <footer class="footer">
+        <p>&copy; 2026 Afterblink. All rights reserved.</p>
+      </footer>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="tab" id="tab-about">
+      <div class="container about-container">
+        <div class="about-card">
+          <div class="about-header">
+            <img src="media/Logo.png" alt="Afterblink Logo" class="about-logo" />
+          </div>
+          <h1 class="about-heading">About the Creator</h1>
+          <div class="about-body">
+            <p>Behind the name <strong>After Blink</strong> is a passionate self-taught animator who began his animation journey in <strong>2024</strong>. Like many artists starting out, his earliest works were far from perfect. The drawings felt rough, the movement was stiff, and every project seemed to reveal another skill that needed improvement. Yet instead of giving up, he chose to keep creating.</p>
+            <p>What started as simple experiments gradually became a genuine passion. As his love for animation grew, so did his willingness to explore new techniques, tools, and creative challenges. Every finished scene became an opportunity to learn something new. Every mistake became a lesson. Every animation, no matter how small, pushed him one step closer to the stories he wanted to tell.</p>
+            <p>Inspired by anime, cinematic storytelling, and character-driven worlds, he continues to study the craft of animation while building his own unique style. From sketching keyframes and designing characters to experimenting with visual effects and storytelling, he enjoys every part of the creative process. His goal is not only to create entertaining animations but also to continuously evolve as an artist with each project he completes.</p>
+            <p>Today, After Blink focuses on creating original animated content, sharing creative experiments, and documenting his journey as he grows from a passionate beginner into a skilled storyteller. Whether it's action scenes, emotional moments, animation breakdowns, or behind-the-scenes progress updates, every piece of work represents another step forward.</p>
+            <p>This website serves as a home for his creations, ideas, and ongoing projects. Visitors can explore artwork, animations, development updates, and future releases while following the growth of a creator who believes that improvement comes from persistence, curiosity, and a genuine love for the craft.</p>
+            <p class="about-closer">The journey is still only beginning, and there is much more to come.</p>
+          </div>
+          <div class="divider"></div>
+          <div class="about-meta">
+            <span class="about-birthday"><i class="fa-solid fa-cake-candles"></i> Birthday: October 17</span>
+          </div>
+          <blockquote class="about-quote">
+            <i class="fa-solid fa-quote-left"></i> Every frame is another opportunity to improve. Every animation is another step forward. <i class="fa-solid fa-quote-right"></i>
+            <cite>— After Blink</cite>
+          </blockquote>
+        </div>
+      </div>
+      <footer class="footer">
+        <p>&copy; 2026 Afterblink. All rights reserved.</p>
+      </footer>
+    </section>
+
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/splash.js"></script>
+  <script src="js/stars.js"></script>
+  <script src="js/tabs.js"></script>
+  <script src="js/media.js"></script>
+  <script src="js/socials.js"></script>
+  <script src="js/counter.js"></script>
+</body>
+</html>
